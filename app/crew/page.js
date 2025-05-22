@@ -30,29 +30,30 @@ export default function CrewPage() {
   const activeCrew = crewMembers[activeIndex];
 
   return (
-    <main className="bg-[url('/bg-3.jpg')] bg-cover bg-center min-h-screen text-white px-6 md:px-16 lg:px-40 pt-10 md:pt-20 text-center md:text-left flex flex-col">
-      <h2 className="text-base md:text-xl lg:text-2xl tracking-[3px] uppercase mb-10 self-center md:self-start">
+    <main className="bg-[url('/bg-2.png')] bg-cover bg-center min-h-screen text-white px-6 md:px-16 lg:px-40 py-10 md:py-20">
+      <h2 className="text-base md:text-xl lg:text-2xl tracking-[3px] uppercase text-center md:text-left mb-10 p-20">
         <span className="text-gray-600 font-bold mr-4">02</span> Meet your crew
       </h2>
 
-      <div className="flex flex-col lg:flex-row items-center justify-between gap-12 md:gap-20 w-full max-w-[1200px] mx-auto">
-        <div className="flex-1">
+      <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-20 w-full max-w-[1200px] mx-auto">
+        <div className="flex-1 text-center lg:text-left">
           <h3 className="text-lg md:text-2xl text-gray-400 uppercase mb-2 tracking-widest">
             {activeCrew.role}
           </h3>
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif uppercase mb-6">
             {activeCrew.name}
           </h1>
-          <p className="text-gray-300 leading-relaxed max-w-xl mx-auto md:mx-0 mb-8">
+          <p className="text-gray-300 leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8">
             {activeCrew.description}
           </p>
 
-          <div className="flex justify-center md:justify-start gap-4">
+          <div className="flex justify-center lg:justify-start gap-4">
             {crewMembers.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                aria-label={`crew member ${index + 1}`}
+                className={`w-4 h-4 rounded-full transition-colors duration-300 ${
                   activeIndex === index
                     ? "bg-white"
                     : "bg-gray-600 hover:bg-gray-400"
@@ -61,14 +62,14 @@ export default function CrewPage() {
             ))}
           </div>
         </div>
-      </div>
 
-      <div className="flex justify-center mt-8">
-        <img
-          src={activeCrew.image}
-          alt={activeCrew.name}
-          className="h-[300px] md:h-[500px] lg:h-[600px] object-contain transition-all duration-300"
-        />
+        <div className="flex justify-center flex-1">
+          <img
+            src={activeCrew.image}
+            alt={activeCrew.name}
+            className="h-[300px] md:h-[450px] lg:h-[550px] object-contain transition-all duration-300"
+          />
+        </div>
       </div>
     </main>
   );

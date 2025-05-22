@@ -6,8 +6,8 @@ export default function Home() {
   const [isHover, setIsHover] = useState(false);
 
   return (
-    <main className="bg-[url('/bg-1.jpg')] bg-cover bg-center min-h-screen text-white overflow-hidden">
-      <div className="flex flex-col md:flex-row items-center justify-between px-6 md:px-16 lg:px-40 py-24 md:py-28 gap-20 md:gap-0">
+    <main className="bg-[url('/bg-1.jpg')] bg-cover bg-center min-h-screen text-white overflow-hidden flex items-end md:items-center justify-center">
+      <div className="flex flex-col md:flex-row items-center justify-between px-6 md:px-16 lg:px-40 py-16 md:py-28 gap-20 md:gap-0 w-full max-w-screen-xl">
         <div className="text-center md:text-left max-w-[450px] lg:max-w-[550px] space-y-6">
           <p className="text-sm md:text-base tracking-[3px] text-slate-300 uppercase">
             So, you want to travel to
