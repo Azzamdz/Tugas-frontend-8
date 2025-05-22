@@ -1,15 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #fefefe;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-barlow: var(--font-barlow);
+  --font-display: var(--font-bellefair);
+  --font-condensed: var(--font-barlow-condensed);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +23,19 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-barlow);
 }
+
+h1,
+h2,
+h3,
+button {
+  font-family: var(--font-bellefair);
+}
+
+.condensed {
+  font-family: var(--font-barlow-condensed);
+}
+
+
+
