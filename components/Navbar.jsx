@@ -1,9 +1,18 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
+
+const navLinks = [
+  { href: "/", label: "Home", number: "00" },
+  { href: "/destination", label: "Destination", number: "01" },
+  { href: "/crew", label: "Crew", number: "02" },
+  { href: "/technology", label: "Technology", number: "03" },
+];
 
 export default function Navbar() {
   const [isMenu, setIsMenu] = useState(false);
+  const pathname = usePathname();
 
   return (
     <nav className="p-5 md:p-0 fixed md:pt-5 flex items-center justify-between w-full z-50">
@@ -38,46 +47,23 @@ export default function Navbar() {
           <div className="h-0.5 bg-white w-7 -rotate-45 absolute"></div>
         </li>
 
-        <li
-          onClick={() => setIsMenu(false)}
-          className="hover:text-slate-300 w-full md:w-fit h-15"
-        >
-          <Link href="/">
-            <p>
-              <span className="font-bold">00</span> Home
-            </p>
-          </Link>
-        </li>
-        <li
-          onClick={() => setIsMenu(false)}
-          className="hover:text-slate-300 w-full md:w-fit h-15"
-        >
-          <Link href="/destination">
-            <p>
-              <span className="font-bold">01</span> Destination
-            </p>
-          </Link>
-        </li>
-        <li
-          onClick={() => setIsMenu(false)}
-          className="hover:text-slate-300 w-full md:w-fit h-15"
-        >
-          <Link href="/crew">
-            <p>
-              <span className="font-bold">02</span> Crew
-            </p>
-          </Link>
-        </li>
-        <li
-          onClick={() => setIsMenu(false)}
-          className="hover:text-slate-300 w-full md:w-fit h-15"
-        >
-          <Link href="/technology">
-            <p>
-              <span className="font-bold">03</span> Technology
-            </p>
-          </Link>
-        </li>
+        {navLinks.map((link) => (
+          <li
+            key={link.href}
+            onClick={() => setIsMenu(false)}
+            className={`hover:text-slate-300 w-full md:w-fit h-15 hover:border-b-2 ${
+              pathname === link.href
+                ? "border-b-2 border-white"
+                : "border-b-2 border-transparent"
+            }`}
+          >
+            <Link href={link.href}>
+              <p>
+                <span className="font-bold">{link.number}</span> {link.label}
+              </p>
+            </Link>
+          </li>
+        ))}
       </ul>
     </nav>
   );
